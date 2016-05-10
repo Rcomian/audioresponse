@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Audio</title>
+
+    <link rel="icon" href="/images/audioresponse-favicon.png">
+
+    <!-- Bootstrap -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap-combobox/css/bootstrap-combobox.css" rel="stylesheet">
+
+    <!-- Morris -->
+    <link rel="stylesheet" href="bower_components/morris.js/morris.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class="container">
+        <h1>Audio</h1>
+
+        <form>
+            <div class="form-group">
+                <label for="coarseFrequency">Coarse Frequency</label>
+                <input type="range" class="form-control" id="coarseFrequencey" min=20 max=19999 data-bind="value: coarse, valueUpdate: 'input'">
+            </div>
+            <div class="form-group">
+                <label for="fineFrequency">Fine Frequency</label>
+                <input type="range" class="form-control" id="fineFrequency" min=-100 max=100 data-bind="value: fine, valueUpdate: 'input'">
+            </div>
+            <div class="form-group">
+                <label for="volume">Volume</label>
+                <span class="input-group">
+                    <span class="input-group-addon">
+                        <button data-bind="click: volumeDown">&lt;</button>
+                        <button data-bind="click: volumeUp">&gt;</button>
+                    </span>
+                    <input type="range" class="form-control" id="volume" min=0.1 max=1000 step=0.1 data-bind="value: volume, valueUpdate: 'input'">
+                </span>
+            </div>
+
+            <input type="checkbox" class="" id="dots" data-bind="checked: interval, valueUpdate: 'input'">
+            <button class="btn btn-default" data-bind="click: playPause">Play / Pause</button>
+            <button class="btn btn-default" data-bind="click: beep">Beep</button>
+            <button class="btn btn-default" data-bind="click: clear">Clear</button>
+            <button class="btn btn-default" data-bind="click: reference">Reference</button>
+            <select data-bind="options: channels, optionsText: 'name', optionsValue: 'value', value: currentChannel"></select>
+
+            <span data-bind="text: finalFrequency"></span>
+
+            <button class="btn btn-default" data-bind="click: quieter">All Quieter</button>
+            <button class="btn btn-default" data-bind="click: louder">All Louder</button>
+        </form>
+
+        <div id="frequencyResponse" style="height: 250px;"></div>
+
+        <button class="btn btn-default" data-bind="click: loop">Play marks</button>
+        <button class="btn btn-default" data-bind="click: mark1">Mark 1</button>
+        <button class="btn btn-default" data-bind="click: mark2">Mark 2</button>
+        <button class="btn btn-default" data-bind="click: mark3">Mark 3</button>
+        <button class="btn btn-default" data-bind="click: mark4">Mark 4</button>
+
+        <br/>
+        <br/>
+
+        <form>
+            <button class="btn btn-default" data-bind="click: saveStorage">Save</button>
+            <button class="btn btn-default" data-bind="click: loadStorage">Load</button>
+            <button class="btn btn-default" data-bind="click: deleteStorage">Delete</button>
+            <input type="text" class="" id="saveName" data-bind="value: saveName, valueUpdate: 'input'">
+            <select data-bind="options: saves, value: loadName">
+            </select>
+        </form>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/bootstrap-combobox/js/bootstrap-combobox.js"></script>
+
+    <!-- Include knockout libraries -->
+    <script src="bower_components/knockout/dist/knockout.js"></script>
+    <!-- Include Morris -->
+    <script src="bower_components/raphael/raphael.min.js"></script>
+    <script src="bower_components/morris.js/morris.min.js"></script>
+
+    <script src="bower_components/lodash/dist/lodash.min.js"></script>
+
+    <!-- Include view models -->
+    <script src="javascripts/viewmodels/page.js"></script>
+
+    <script src="javascripts/audio.js"></script>
+  </body>
+</html>

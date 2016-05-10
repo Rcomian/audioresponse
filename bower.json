@@ -1,0 +1,25 @@
+{
+  "name": "webaudio",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Jim Tupper <git@tupper.org.uk>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "knockout": "~3.4.0",
+    "morris.js": "~0.5.1",
+    "lodash": "^4.11.2",
+    "bootstrap-combobox": "^1.1.7"
+  }
+}
